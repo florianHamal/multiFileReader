@@ -3,18 +3,21 @@ package main.at.flori4n.multiFileReader;
 import java.io.File;
 import java.util.List;
 
-public class FIleManager {
+public class MultiFIleReader {
     private String path;
     private String[] readFiles;
     private String[] writeFiles;
 
-    public FIleManager(String path, String[] readFiles, String[] writeFiles) {
+    private FileRunnerInterface fileRunnerInterface;
+
+    public MultiFIleReader(String path, String[] readFiles, String[] writeFiles, FileRunnerInterface fileRunnerInterface) {
         this.path = path;
         this.readFiles = readFiles;
         this.writeFiles = writeFiles;
+        this.fileRunnerInterface=fileRunnerInterface;
     }
 
-    public void runnAll(FileRunnerInterface fileRunnerInterface){
+    public void runAll(){
         for (int i = 0;i<readFiles.length;i++){
             List<String> input = new Filereader(path+ File.separator+readFiles[i]).readAll();
             List<String> output = fileRunnerInterface.runForEveryFile(input);//mainForEveryFile(input);

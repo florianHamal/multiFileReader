@@ -12,12 +12,12 @@ public class Main {
         String[] writeFiles = {"test.txt","test2.txt"};
 
 
-        new FIleManager(path,readFiles,writeFiles).runnAll(new FileRunnerInterface() {
+        new MultiFIleReader(path,readFiles,writeFiles,new FileRunnerInterface() {
             @Override
             public List<String> runForEveryFile(List<String> list) {
                 System.out.println(list);
                 return list;
             }
-        });
+        }).runAll();
     }
 }
